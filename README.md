@@ -38,7 +38,7 @@ After training for 25 epochs, you can find results similiar to the image at `./a
 
 <img src="assets/edges2shoes/edges2shoes.png" width="512" alt="edges2shoes">
 
-You can download the pre-trained models [here](https://huggingface.co/luethan2025/pix2pix) and use the provided Jupyter Notebook `inference.ipynb` to generate some samples.
+You can download the pre-trained models [here](https://huggingface.co/luethan2025/bicyclegan) and use the provided Jupyter Notebook `inference.ipynb` to generate some samples.
 
 ## Method
 
