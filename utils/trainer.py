@@ -236,6 +236,29 @@ def main():
         )
         dataset = "edges2shoes"
         img_size = (3, args.image_height, args.image_width)
+    elif args.dataset == "edges2handbags":
+        dataset = load_dataset("luethan2025/edges2handbags", split="train")
+        transform = transforms.Compose([
+            transforms.Resize((args.image_height, args.image_width), Image.BICUBIC),
+            transforms.ToTensor(),
+            transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
+        ])
+        dataset = ImageDataset(
+            hf_dataset=dataset,
+            transform=transform
+        )
+        dataloader = data.DataLoader(
+            dataset,
+            batch_size=args.batch_size,
+            shuffle=True,
+            num_workers=args.num_workers,
+            pin_memory=args.pin_memory,
+            persistent_workers=args.num_workers > 0,
+            prefetch_factor=4 if args.num_workers > 0 else None,
+            drop_last=True,
+        )
+        dataset = "edges2handbags"
+        img_size = (3, args.image_height, args.image_width)
 
     G = Generator(
         img_size=img_size,
